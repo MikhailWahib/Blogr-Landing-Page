@@ -9,7 +9,7 @@ This is a solution to the [Blogr landing page challenge on Frontend Mentor](http
 
 ### Link
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://mikhailwahib.github.io/Blogr-Landing-Page/)
 
 
 ### Built with
