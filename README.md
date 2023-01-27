@@ -16,6 +16,7 @@ A full responsive landing page built with just HTML and TailwindCSS.
 
 - Semantic HTML5 markup
 - TailwindCSS
+- AOS library for on-scroll animations
 - Mobile-first workflow
 
 
