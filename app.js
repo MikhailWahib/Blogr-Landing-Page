@@ -20,13 +20,14 @@ navLinks.forEach((el, i) => {
   let show = false;
   el.addEventListener("click", () => {
     show = !show;
-    // Hide other menus
-    mobileCatMenu.forEach((menu, j) => {
-      menu.style.display = "none";
-      arrowIcon[j].style.transform = "rotate(0deg)";
-    });
     // Show or hide the clicked menu
     if (show) {
+      // Hide other menus
+      mobileCatMenu.forEach((menu, j) => {
+        menu.style.display = "none";
+        arrowIcon[j].style.transform = "rotate(0deg)";
+      });
+
       mobileCatMenu[i].style.display = "flex";
       arrowIcon[i].style.transform = "rotate(-180deg)";
     } else if (!show) {
