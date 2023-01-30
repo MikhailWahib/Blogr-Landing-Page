@@ -1,6 +1,6 @@
 const mobileMenuBtn = document.querySelector(".menu-btn");
 const mobileMenu = document.querySelector(".nav-content");
-const navLink = document.querySelectorAll(".nav-link");
+const navLinks = document.querySelectorAll(".nav-link");
 const mobileCatMenu = document.querySelectorAll(".cat-menu");
 const arrowIcon = document.querySelectorAll(".mobile-arrow");
 
@@ -16,24 +16,22 @@ mobileMenuBtn.addEventListener("click", () => {
   }
 });
 
-for (let i = 0; i < navLink.length; i++) {
+navLinks.forEach((el, i) => {
   let show = false;
-  navLink[i].addEventListener("click", () => {
+  el.addEventListener("click", () => {
     show = !show;
+    // Hide other menus
+    mobileCatMenu.forEach((menu, j) => {
+      menu.style.display = "none";
+      arrowIcon[j].style.transform = "rotate(0deg)";
+    });
+    // Show or hide the clicked menu
     if (show) {
-      // reset other menus
-      mobileCatMenu.forEach((el) => {
-        el.style.display = "none";
-      });
-      arrowIcon.forEach((el) => {
-        el.style.transform = "rotate(0deg)";
-      });
-
       mobileCatMenu[i].style.display = "flex";
       arrowIcon[i].style.transform = "rotate(-180deg)";
-    } else {
+    } else if (!show) {
       mobileCatMenu[i].style.display = "none";
       arrowIcon[i].style.transform = "rotate(0deg)";
     }
   });
-}
+});
