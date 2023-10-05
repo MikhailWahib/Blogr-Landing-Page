@@ -1,38 +1,25 @@
-const mobileMenuBtn = document.querySelector(".menu-btn");
-const mobileMenu = document.querySelector(".nav-content");
-const navLinks = document.querySelectorAll(".nav-link");
-const mobileCatMenu = document.querySelectorAll(".cat-menu");
-const arrowIcon = document.querySelectorAll(".mobile-arrow");
+const mobileMenuBtn = document.querySelector('.menu-btn')
+const mobileMenu = document.querySelector('.nav-content')
+const navLinks = document.querySelectorAll('.nav-link')
+const mobileCatMenu = document.querySelectorAll('.cat-menu')
+const arrowIcon = document.querySelectorAll('.mobile-arrow')
 
-let show = false;
-mobileMenuBtn.addEventListener("click", () => {
-  show = !show;
-  if (show) {
-    mobileMenu.style.display = "flex";
-    mobileMenuBtn.classList.add("close");
-  } else {
-    mobileMenu.style.display = "none";
-    mobileMenuBtn.classList.remove("close");
-  }
-});
+let isMobileMenuOpen = false
+
+mobileMenuBtn.addEventListener('click', () => {
+	isMobileMenuOpen = !isMobileMenuOpen
+	mobileMenu.style.display = isMobileMenuOpen ? 'flex' : 'none'
+	mobileMenuBtn.classList.toggle('close', isMobileMenuOpen)
+})
 
 navLinks.forEach((el, i) => {
-  let show = false;
-  el.addEventListener("click", () => {
-    show = !show;
-    // Show or hide the clicked menu
-    if (show) {
-      // Hide other menus
-      mobileCatMenu.forEach((menu, j) => {
-        menu.style.display = "none";
-        arrowIcon[j].style.transform = "rotate(0deg)";
-      });
-
-      mobileCatMenu[i].style.display = "flex";
-      arrowIcon[i].style.transform = "rotate(-180deg)";
-    } else if (!show) {
-      mobileCatMenu[i].style.display = "none";
-      arrowIcon[i].style.transform = "rotate(0deg)";
-    }
-  });
-});
+	let isSubMenuOpen = false
+	el.addEventListener('click', () => {
+		isSubMenuOpen = !isSubMenuOpen
+		mobileCatMenu.forEach((menu, j) => {
+			menu.style.display = j === i && isSubMenuOpen ? 'flex' : 'none'
+			arrowIcon[j].style.transform =
+				j === i && isSubMenuOpen ? 'rotate(-180deg)' : 'rotate(0deg)'
+		})
+	})
+})
